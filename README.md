@@ -11,18 +11,19 @@ Production — статическая сборка и Nginx.
 
 ## Требования
 
-- Node.js 24.11.0 (`.nvmrc`)
+- Node.js: pnpm не блокирует установку по версии Node
+- Рекомендуемая локальная версия: 24.11.0 (`.nvmrc`)
 - pnpm 11.20.0 через Corepack
 - Docker Compose — только для контейнерного запуска
 
 ```bash
-nvm use
+nvm use   # необязательно, если Node уже стоит
 corepack enable
-pnpm install --frozen-lockfile --config.engine-strict=false
+pnpm install --frozen-lockfile
 ```
 
-Флаг нужен из‑за транзитивной dev-зависимости, которой требуется более новый Node,
-чем зафиксированный в проекте.
+Nuxt 4.5 сам рассчитан на Node 22.19+, 24.11+ или 26+.
+На более старых версиях установка пройдёт, но `dev` / `build` могут упасть.
 
 ## Запуск
 
